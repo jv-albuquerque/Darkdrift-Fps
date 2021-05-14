@@ -14,7 +14,7 @@ public class ClientConnection
         ServerManager.Instance.Players.Add(client.ID, this);
         ServerManager.Instance.PlayersByName.Add(Name, this);
 
-        using (Message message = Message.Create((ushort)Tags.LoginRequestAccepted, new LoginInfoData(client.ID, new LobbyInfoData())))
+        using (Message message = Message.Create((ushort)Tags.LoginRequestAccepted, new LoginInfoData(client.ID, new LobbyInfoData(RoomManager.Instance.GetRoomDataList()))))
         {
             client.SendMessage(message, SendMode.Reliable);
         }
